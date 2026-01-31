@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мохіто</title>
+</head>
+<body>
+    <h1>Мохіто</h1>
+    <p>Інформація про мохіто.</p>
+    <a href="{% url 'mohitocom' %}">Додати коментар</a>
+    {% for com in comm %}
+        <div class="post-item">
+            <p>{{ com.description }}</p>
+        </div>
+        {% endfor %}
+    {% include 'includes/back_button.html' %}
+</body>
+</html>
