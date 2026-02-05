@@ -8,7 +8,12 @@
 <body>
     <h1>Вафлі — полуничний джем</h1>
     <p>Опис вафель з полуничним джемом.</p>
-    <p>Опис вафель з полуничним джемом.</p>
+    <a href="{% url 'poldjmcom' %}" class="btn btn-back">Додати коментар</a>
+    {% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
     {% include 'includes/back_button.html' %}
 </body>
 </html>

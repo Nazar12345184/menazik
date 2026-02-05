@@ -41,43 +41,210 @@ def breakfest(request):
 
 
 def sirniku(request):
-    return render(request, 'breakfest/sirniku/sirniku.html')
-
+  
+    return render(request, 'breakfest/sirniku/sirniku.html',)
+##############################
 
 def sirniku_mal(request):
-    return render(request, 'breakfest/sirniku/mal.html')
+    comm = com.objects.filter(name__name='sirniku_mal')
+    return render(request, 'breakfest/sirniku/mal.html', context={'comm': comm})
 
+def sirniku_malcom(request):
+    item = get_object_or_404(menuu, name='sirniku_mal')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("sirniku_mal")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/sirniku/malcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='sirniku_mal')
+    return render(request, 'breakfest/sirniku/comp.html', context={'comm': comm})
+
+###########################
 
 def sirniku_shok(request):
-    return render(request, 'breakfest/sirniku/shok.html')
+    comm = com.objects.filter(name__name='sirniku_shok')
+    return render(request, 'breakfest/sirniku/shok.html', context={'comm': comm})
+
+def sirniku_shokcom(request):
+    item = get_object_or_404(menuu, name='sirniku_shok')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("sirniku_shok")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/sirniku/shokcom.html', {"form": form, "item": item})
+
+
+def comp(request):
+    comm = com.objects.filter(name__name='sirniku_shok')
+    return render(request, 'breakfest/sirniku/comp.html', context={'comm': comm})
+
+###########################
 
 
 def sirniku_sol(request):
-    return render(request, 'breakfest/sirniku/sol.html')
+    comm = com.objects.filter(name__name='sirniku_sol')
+    return render(request, 'breakfest/sirniku/sol.html', context={'comm': comm})
 
+def sirniku_solcom(request):
+    item = get_object_or_404(menuu, name='sirniku_sol')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("sirniku_sol")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/sirniku/solcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='sirniku_sol')
+    return render(request, 'breakfest/sirniku/comp.html', context={'comm': comm})
+
+######################
 
 def tostu(request):
     return render(request, 'breakfest/tostu/tostu.html')
 
-
+########################
 def tostu_avo(request):
-    return render(request, 'breakfest/tostu/avo.html')
+    comm = com.objects.filter(name__name='tostu_avo')
+    return render(request, 'breakfest/tostu/avo.html', context={'comm': comm})
+
+def tostu_avocom(request):
+    item = get_object_or_404(menuu, name='tostu_avo')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("tostu_avo")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/tostu/avocom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='tostu_avo')
+    return render(request, 'breakfest/tostu/comp.html', context={'comm': comm})
+
+###############################
 
 
 def tostu_chdj(request):
-    return render(request, 'breakfest/tostu/chdj.html')
+    comm = com.objects.filter(name__name='tostu_chdj')
+    return render(request, 'breakfest/tostu/chdj.html', context={'comm': comm})
+
+def tostu_chdjcom(request):
+    item = get_object_or_404(menuu, name='tostu_chdj')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("tostu_chdj")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/tostu/chdjcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='tostu_chdj')
+    return render(request, 'breakfest/tostu/comp.html', context={'comm': comm})
+
+###########################
+
+def tostu_maldj(request):   
+    comm = com.objects.filter(name__name='tostu_maldj')
+    return render(request, 'breakfest/tostu/maldj.html', context={'comm': comm})
+
+def tostu_maldjcom(request):
+    item = get_object_or_404(menuu, name='tostu_maldj')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("tostu_maldj")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/tostu/maldjcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='tostu_maldj')
+    return render(request, 'breakfest/tostu/comp.html', context={'comm': comm})
 
 
-def tostu_maldj(request):
-    return render(request, 'breakfest/tostu/maldj.html')
-
+########################
 
 def tostu_poldj(request):
-    return render(request, 'breakfest/tostu/poldj.html')
+    comm = com.objects.filter(name__name='tostu_poldj')
+    return render(request, 'breakfest/tostu/poldj.html', context={'comm': comm})
+
+def tostu_poldjcom(request):
+    item = get_object_or_404(menuu, name='tostu_poldj')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("tostu_poldj")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/tostu/poldjcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='tostu_poldj')
+    return render(request, 'breakfest/tostu/comp.html', context={'comm': comm})
+
+######################
 
 
 def tostu_sur(request):
-    return render(request, 'breakfest/tostu/sur.html')
+    comm = com.objects.filter(name__name='tostu_sur')
+    return render(request, 'breakfest/tostu/sur.html', context={'comm': comm})
+
+def tostu_surcom(request):
+    item = get_object_or_404(menuu, name='tostu_sur')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("tostu_sur")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/tostu/surcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='tostu_sur')
+    return render(request, 'breakfest/tostu/comp.html', context={'comm': comm})
+
+##############################
 
 
 def vafli(request):
@@ -85,20 +252,100 @@ def vafli(request):
 
 
 def vafli_maldjm(request):
-    return render(request, 'breakfest/vafli/maldjm.html')
+    comm = com.objects.filter(name__name='vafli_maldjm')
+    return render(request, 'breakfest/vafli/maldjm.html', context={'comm': comm})
+
+def vafli_maldjmcom(request):
+    item = get_object_or_404(menuu, name='vafli_maldjm')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("vafli_maldjm")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/vafli/maldjmcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='vafli_maldjm')
+    return render(request, 'breakfest/vafli/comp.html', context={'comm': comm})
+
+#################
 
 
 def vafli_med(request):
-    return render(request, 'breakfest/vafli/med.html')
+    comm = com.objects.filter(name__name='vafli_med')
+    return render(request, 'breakfest/vafli/med.html', context={'comm': comm})
+
+def vafli_medcom(request):
+    item = get_object_or_404(menuu, name='vafli_med')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("vafli_med")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/vafli/medcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='vafli_med')
+    return render(request, 'breakfest/vafli/comp.html', context={'comm': comm})
+
+#########################
 
 
 def vafli_poldjm(request):
-    return render(request, 'breakfest/vafli/poldjm.html')
+    comm = com.objects.filter(name__name='vafli_poldjm')
+    return render(request, 'breakfest/vafli/poldjm.html', context={'comm': comm})
+
+def vafli_poldjmcom(request):
+    item = get_object_or_404(menuu, name='vafli_poldjm')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("vafli_poldjm")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/vafli/poldjmcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comm = com.objects.filter(name__name='vafli_poldjm')
+    return render(request, 'breakfest/vafli/comp.html', context={'comm': comm})
+##########################
 
 
 def vafli_sirop(request):
-    return render(request, 'breakfest/vafli/sirop.html')
+    comm = com.objects.filter(name__name='vafli_sirop')
+    return render(request, 'breakfest/vafli/sirop.html', context={'comm': comm})
 
+def vafli_siropcom(request):
+    item = get_object_or_404(menuu, name='vafli_sirop')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect("vafli_sirop")
+    else:
+        form = PostForm()
+
+    return render(request, 'breakfest/vafli/siropcom.html', {"form": form, "item": item})
+
+def comp(request):
+    comp = com.objects.filter(name__name='vafli_sirop')
+    return render(request, 'breakfest/vafli/comp.html', context={'comp': comp})
 
 # ---------------- SALAT ----------------
 

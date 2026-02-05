@@ -9,7 +9,12 @@
 <body>
 	<h1>Тости — полуничний джем</h1>
 	<p>Опис тостів з полуничним джемом.</p>
-	<p>Опис тостів з полуничним джемом.</p>
+	<a href="{% url 'poldjcom' %}" class="btn btn-back">Додати коментар</a>
+	{% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
 	{% include 'includes/back_button.html' %}
 </body>
 </html>
