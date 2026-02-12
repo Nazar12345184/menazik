@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>Салат Цезар</h1>
-    <p>Опис салату Цезар.</p>
+    <a href="{% url 'shezarcom' %}" class="btn btn-back">Додати коментар</a>
+    {% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
+    {% include 'includes/back_button.html' %}
     <p>Опис салату Цезар.</p>
     {% include 'includes/back_button.html' %}
 </body>

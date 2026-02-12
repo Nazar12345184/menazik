@@ -57,7 +57,7 @@ def sirniku_malcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("sirniku_mal")
+            return redirect("mal")
     else:
         form = PostForm()
 
@@ -81,7 +81,7 @@ def sirniku_shokcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("sirniku_shok")
+            return redirect("shok")
     else:
         form = PostForm()
 
@@ -95,7 +95,7 @@ def comp(request):
 ###########################
 
 
-def sirniku_sol(request):
+def sol(request):
     comm = com.objects.filter(name__name='sirniku_sol')
     return render(request, 'breakfest/sirniku/sol.html', context={'comm': comm})
 
@@ -107,15 +107,21 @@ def sirniku_solcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("sirniku_sol")
+            return redirect("sol")
     else:
         form = PostForm()
 
     return render(request, 'breakfest/sirniku/solcom.html', {"form": form, "item": item})
 
 def comp(request):
-    comm = com.objects.filter(name__name='sirniku_sol')
-    return render(request, 'breakfest/sirniku/comp.html', context={'comm': comm})
+    comm = com.objects.all()
+    return render(request, 'breakfest/sirniku/sol.html', context={'comm': comm})
+
+
+
+
+
+
 
 ######################
 
@@ -135,7 +141,7 @@ def tostu_avocom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("tostu_avo")
+            return redirect("avo")
     else:
         form = PostForm()
 
@@ -160,7 +166,7 @@ def tostu_chdjcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("tostu_chdj")
+            return redirect("chdj")
     else:
         form = PostForm()
 
@@ -184,7 +190,7 @@ def tostu_maldjcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("tostu_maldj")
+            return redirect("maldj")
     else:
         form = PostForm()
 
@@ -209,7 +215,7 @@ def tostu_poldjcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("tostu_poldj")
+            return redirect("poldj")
     else:
         form = PostForm()
 
@@ -234,7 +240,7 @@ def tostu_surcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("tostu_sur")
+            return redirect("sur")
     else:
         form = PostForm()
 
@@ -263,7 +269,7 @@ def vafli_maldjmcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("vafli_maldjm")
+            return redirect("maldjm")
     else:
         form = PostForm()
 
@@ -288,7 +294,7 @@ def vafli_medcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("vafli_med")
+            return redirect("med")
     else:
         form = PostForm()
 
@@ -313,7 +319,7 @@ def vafli_poldjmcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("vafli_poldjm")
+            return redirect("poldjm")
     else:
         form = PostForm()
 
@@ -321,7 +327,7 @@ def vafli_poldjmcom(request):
 
 def comp(request):
     comm = com.objects.filter(name__name='vafli_poldjm')
-    return render(request, 'breakfest/vafli/comp.html', context={'comm': comm})
+    return render(request, 'breakfest/vafli/poldj.html', context={'comm': comm})
 ##########################
 
 
@@ -337,7 +343,7 @@ def vafli_siropcom(request):
             new_comment = form.save(commit=False)
             new_comment.name = item
             new_comment.save()
-            return redirect("vafli_sirop")
+            return redirect("sirop")
     else:
         form = PostForm()
 
@@ -352,23 +358,142 @@ def comp(request):
 def salat(request):
     return render(request, 'salat/salat.html')
 
+########################################
 
 def ol(request):
-    return render(request, 'salat/ol/ol.html')
+    comm = com.objects.filter(name__name='ol')
+    return render(request, 'salat/ol/ol.html', context={"comm": comm})
 
+
+def olcom(request):
+    item = get_object_or_404(menuu, name='ol')
+    comm = com.objects.filter(name=item)
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect('ol')
+    else:
+        form = PostForm()
+
+    return render(request, 'salat/ol/olcom.html', {'form': form, 'comm': comm})
+
+    
+
+        
+
+##########################################
 
 def shezar(request):
-    return render(request, 'salat/shezar/shezar.html')
+    comm = com.objects.filter(name__name='shezar')
+    return render(request, 'salat/shezar/shezar.html', context={"comm": comm})
+
+def shezarcom(request):
+    item = get_object_or_404(menuu, name='shezar')
+
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('shezar')
+    else:
+        form = PostForm()  
+
+    return render(request, 'salat/shezar/shezarcom.html', {'form': form})
+
+
+
+##########################################
 
 def grech(request):
-    return render(request, 'salat/grech/gresh.html')
+    comm = com.objects.filter(name__name='grech')
+    return render(request, 'salat/grech/gresh.html', context={"comm": comm})
+
+
+
+def grechcom(request):
+    item = get_object_or_404(menuu, name='grech')  
+
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item
+            new_comment.save()
+            return redirect('gresh')
+    else:
+        form = PostForm()  
+
+    return render(request, 'salat/grech/greshcom.html', {'form': form})
+
+
+
+
+##########################################
 
 
 def zavok(request):
-    return render(request, 'salat/zavok/zavok.html')
+    comm = com.objects.filter(name__name='zavok')
+    return render(request, 'salat/zavok/zavok.html', context={"comm": comm})
+
+def zavokcom(request):
+    item = get_object_or_404(menuu, name='zavok')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment = name = item
+            new_comment.save()
+            return redirect('zavok')
+    else:
+        return(request, 'salat/zavok/zavok.html')
+    
+#####################################
 
 def avokado(request):
-    return render(request, 'salat/avokado/avokado.html')
+    comm = com.objects.filter(name__name='avokado')
+    return render(request, 'salat/avokado/avokado.html', context={"comm": comm})
+
+def avokadocom(request):
+    item = get_object_or_404(menuu, name='avokado')  
+
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item  
+            new_comment.save()
+            return redirect('avokado')
+    else:
+        form = PostForm()
+
+    return render(request, 'salat/avokado/avokadocom.html', {'form': form})
+
+
+#############################################
+
+
+def krevetka(request):
+    comm = com.objects.filter(name__name='krevetka')
+    return render(request, 'salat/krevetka/krevetka.html',  context={"comm": comm})
+
+def krevetkacom(request):
+    item = get_object_or_404(menuu, name='krevetka')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('krevetka')
+    else:
+        form = PostForm()  
+
+    return render(request, 'salat/krevetka/krevetkacom.html', {'form': form})
 
 
 # ---------------- SUP ----------------
@@ -860,10 +985,6 @@ def comp(request):
     return render(request, 'drink/voda/yzvar.html', context={'comm': comm})
 
 ##########################
-
-
-def krevetka(request):
-    return render(request, 'drink/krevetka.html')
 
 
 # ---------------- DESERT ----------------

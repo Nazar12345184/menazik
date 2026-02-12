@@ -8,6 +8,13 @@
 <body>
     <h1>Салат «Завок»</h1>
     <p>Опис салату Завок.</p>
+    <a href="{% url 'zavokcom' %}" class="btn btn-back">Додати коментар</a>
+    {% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
+    
     {% include 'includes/back_button.html' %}
 </body>
 </html>
