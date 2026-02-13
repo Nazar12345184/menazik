@@ -102,9 +102,13 @@ urlpatterns = [
     path('salat/avokado/', views.avokado, name='avokado'),
     path('salat/avokadocom/', views.avokadocom, name='avokadocom'),
     path('sup/frik/', views.frik, name='frik'),
+    path('sup/frikcom/', views.frikcom, name='frikcom'),
     path('sup/bul/', views.bul, name='bul'),
+    path('sup/bulcom/', views.bulcom, name='bulcom'),
     path('sup/borch/', views.borch, name='borch'),
+    path('sup/borchcom/', views.borchcom, name='borchcom'),
     path('sup/zelborch/', views.zelborch, name='zelborch'),
+    path('sup/zelborchcom/', views.zelborchcom, name='zelborchcom'),
 ]   
 
 

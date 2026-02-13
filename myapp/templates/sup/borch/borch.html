@@ -8,6 +8,14 @@
 <body>
     
 </body>
+
+<a href="{% url 'borchcom' %}" class="btn btn-back">Додати коментар</a>
+
+{% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
 </html>
 
     {% include 'includes/back_button.html' %}

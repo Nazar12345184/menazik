@@ -500,21 +500,83 @@ def krevetkacom(request):
 
 def sup(request):
     return render(request, 'sup/sup.html')
-
+###############################
 
 def frik(request):
-    return render(request, 'sup/frik/frik.html')
+    comm = com.objects.filter(name__name='frik')
+    return render(request, 'sup/frik/frik.html', context={"comm": comm})
+
+def frikcom(request):
+    item = get_object_or_404(menuu, name='frik')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('frik')
+    else:
+        form = PostForm()  
+
+    return render(request, 'sup/frik/frikcom.html', {'form': form})
+#################################
 
 
 def bul(request):
-    return render(request, 'sup/bul/bul.html')
+    comm = com.objects.filter(name__name='bul')
+    return render(request, 'sup/bul/bul.html', context={"comm": comm})
 
+def bulcom(request):
+    item = get_object_or_404(menuu, name='bul')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('bul')
+    else:
+        form = PostForm()  
+
+    return render(request, 'sup/bul/bulcom.html', {'form': form})
+#################################
 
 def borch(request):
-    return render(request, 'sup/borch/borch.html')
+    comm = com.objects.filter(name__name='borch')
+    return render(request, 'sup/borch/borch.html', context={"comm": comm})
+
+def borchcom(request):
+    item = get_object_or_404(menuu, name='borch')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('borch')
+    else:
+        form = PostForm()  
+
+    return render(request, 'sup/borch/borchcom.html', {'form': form})
+#################################
 
 def zelborch(request):
-    return render(request, 'sup/zelborch/zelborch.html')
+    comm = com.objects.filter(name__name='zelborch')
+    return render(request, 'sup/zelborch/zelborch.html', context={"comm": comm})
+
+def zelborchcom(request):
+    item = get_object_or_404(menuu, name='zelborch')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.name = item 
+            new_comment.save()
+            return redirect('zelborch')
+    else:
+        form = PostForm()  
+
+    return render(request, 'sup/zelborch/zelborchcom.html', {'form': form})
 
 
 # ---------------- DRINK ----------------

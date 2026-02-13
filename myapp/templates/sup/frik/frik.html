@@ -6,7 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <a href="{% url 'frikcom' %}" class="btn btn-back">Додати коментар</a>
+    {% for com in comm %}
+                <div class="post-item">
+                    <p>{{ com.description }}</p>
+                </div>
+                {% endfor %}
 </body>
 </html>
 
